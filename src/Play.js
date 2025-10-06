@@ -12,7 +12,6 @@ export class Play extends Phaser.Scene {
         this.selectedCandy = null;
         this.isProcessing = false;
         this.score = 0;
-        this.moves = 30;
         this.candyColors = [
             0xff0000, // Red
             0x00ff00, // Green
@@ -42,12 +41,6 @@ export class Play extends Phaser.Scene {
             fontSize: 24,
             color: '#ffffff'
         });
-        
-        this.movesText = this.add.text(this.scale.width - 50, 100, 'Moves: 30', {
-            fontFamily: 'Arial',
-            fontSize: 24,
-            color: '#ffffff'
-        }).setOrigin(1, 0);
         
         // Create grid container
         const gridOffsetX = (this.scale.width - this.gridWidth * this.tileSize) / 2;
@@ -217,8 +210,6 @@ export class Play extends Phaser.Scene {
     }
 
     swapCandies(candy1, candy2) {
-        if (this.moves <= 0) return;
-        
         this.isProcessing = true;
         
         const col1 = candy1.getData('col');
@@ -261,9 +252,6 @@ export class Play extends Phaser.Scene {
             duration: 300,
             ease: 'Power2',
             onComplete: () => {
-                this.moves--;
-                this.movesText.setText('Moves: ' + this.moves);
-                
                 // Check for matches after swap
                 const matches = this.findMatches();
                 if (matches.length > 0) {
@@ -314,7 +302,6 @@ export class Play extends Phaser.Scene {
             ease: 'Power2',
             onComplete: () => {
                 this.isProcessing = false;
-                this.checkGameOver();
             }
         });
     }
@@ -478,7 +465,6 @@ export class Play extends Phaser.Scene {
             this.handleMatches(matches);
         } else {
             this.isProcessing = false;
-            this.checkGameOver();
         }
     }
 
