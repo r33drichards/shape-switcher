@@ -42,6 +42,27 @@ export class Play extends Phaser.Scene {
             color: '#ffffff'
         });
         
+        // New Game button
+        const newGameButton = this.add.text(this.scale.width - 50, 100, 'NEW GAME', {
+            fontFamily: 'Arial',
+            fontSize: 20,
+            color: '#ffffff',
+            backgroundColor: '#e74c3c',
+            padding: { x: 15, y: 8 }
+        }).setOrigin(1, 0).setInteractive();
+        
+        newGameButton.on('pointerover', () => {
+            newGameButton.setBackgroundColor('#c0392b');
+        });
+        
+        newGameButton.on('pointerout', () => {
+            newGameButton.setBackgroundColor('#e74c3c');
+        });
+        
+        newGameButton.on('pointerdown', () => {
+            this.scene.restart();
+        });
+        
         // Create grid container
         const gridOffsetX = (this.scale.width - this.gridWidth * this.tileSize) / 2;
         const gridOffsetY = 180;
