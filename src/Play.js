@@ -28,7 +28,7 @@ export class Play extends Phaser.Scene {
         this.cameras.main.fadeIn(200);
         
         // Game title
-        this.add.text(this.scale.width / 2, 40, 'CARNIVAL CRASHERS', {
+        this.add.text(this.scale.width / 2, 40, 'SHAPE SWITCHER', {
             fontFamily: 'Arial Black',
             fontSize: 36,
             color: '#ffffff',

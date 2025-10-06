@@ -3,7 +3,7 @@ import { Play } from './Play';
 import Phaser from 'phaser';
 
 const config = {
-    title: 'Carnival Crashers',
+    title: 'Shape Switcher',
     type: Phaser.AUTO,
     width: 640,
     height: 800,
